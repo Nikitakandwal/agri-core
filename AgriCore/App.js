@@ -16,89 +16,28 @@ import Landing from "./Screens/Landing.js";
 import QuickOrder from "./Screens/QuickOrder.js";
 import AddAddress from "./Components/AddAddress.js";
 import SearchPage from "./Screens/SearchPage.js";
+import OrderProfiles from "./Screens/OrderProfiles.js";
+import OrderProfile4 from "./Components/OrderProfile4.js";
+import OrderProfile5 from "./Components/OrderProfile5.js";
+import CreateProfiles from "./Components/CreateProfiles.js";
+import SupportPage from "./Screens/SupportPage.js";
+import Account from "./Screens/Account.js";
+import Trails from "./Screens/Trails.js";
 
 const Stack = createStackNavigator();
 
 const App = () => {
-  const [user, setUser] = useState(true);
 
-  const updateAuth = (value) => {
-    setUser(value);
-  };
-
-  if (!user) {
-    return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Landing"
-          component={Landing}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="LoginScreen"
-          component={LoginScreen}
-          options={{
-            headerShown: false,
-          }}
-        />
-          <Stack.Screen
-          name="RegistrationScreen"
-          component={RegistrationScreen}
-          options={{
-            headerShown: false,
-          }}
-        />
-      </Stack.Navigator>
-      </NavigationContainer>
-    );
-  }
   return (
     <NavigationContainer>
       <Stack.Navigator>
-      {/* <Stack.Screen
+       <Stack.Screen
           name="HomePage"
           component={HomePage}
           options={{
             headerShown: false,
           }}
         />
-        <Stack.Screen
-          name="CartPage"
-          component={CartPage}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="AddAddress"
-          component={AddAddress}
-          options={{
-            headerShown: false,
-          }}
-        /> */}
-        {/* <Stack.Screen
-          name="ProductsPage"
-          component={ProductsPage}
-          options={{
-            headerShown: false,
-          }}
-        /> */}
-         <Stack.Screen
-          name="CartPage"
-          component={CartPage}
-          options={{
-            headerShown: false,
-          }}/>
-        {/* <Stack.Screen
-          name="SearchPage"
-          component={SearchPage}
-          options={{
-            headerShown: false,
-          }}
-        /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );
