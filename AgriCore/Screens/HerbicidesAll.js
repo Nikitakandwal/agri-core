@@ -106,10 +106,7 @@ const HerbicidesPage = ({ filteredCardsData }) => {
       <View style={styles.container}>
         <View style={styles.headerContainer}>
           <Text style={styles.heading}> Herbicides</Text>
-        
         </View>
-    
-
       <CardsAll  CardsData={filteredCardsData} />
       </View>
     );

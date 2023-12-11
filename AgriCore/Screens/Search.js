@@ -1,9 +1,11 @@
 import { StyleSheet, Text, View, Image, TextInput } from 'react-native'
 import React from 'react'
+import Header from '../Components/Header'
 
 const Search = () => {
     return (
-        <View style={{ marginTop: 50 }}>
+        <View style={{}}>
+            <Header />
             <View style={styles.SearchView}>
                 <Image source={require('../assets/img/Bayer.png')} style={styles.InputleftArrow} />
                 <TextInput placeholder='Search ' style={styles.Input} />
@@ -52,7 +54,8 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         borderWidth: 1,
         marginHorizontal: 25,
-        borderRadius: 15
+        borderRadius: 15,
+        marginTop: 30
     },
     Input: {
         width: "70%",

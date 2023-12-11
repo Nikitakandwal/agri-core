@@ -1,8 +1,10 @@
 import React,{useState} from 'react';
-import { View, TextInput, StyleSheet } from 'react-native';
+import { View, TextInput, StyleSheet, Dimensions } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
-const SearchBar = ({ placeholder, onSearch }) => {
+const windowWidth = Dimensions.get("window").width;
+
+const SearchBar = ({ placeholder, onSearch, styleContainer, styleMain }) => {
   const [searchText, setSearchText] = useState('');
 
   const handleSearch = (text) => {
@@ -11,8 +13,8 @@ const SearchBar = ({ placeholder, onSearch }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.searchBar}>
+    <View style={[styles.container, styleMain]}>
+      <View style={[styles.searchBar, styleContainer]}>
         <TextInput
           style={styles.input}
           placeholder={placeholder}
@@ -34,7 +36,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   searchBar: {
-    width: 325,
+    width: windowWidth * 0.9,
     height: 50,
     backgroundColor: 'rgba(217, 217, 217, 0.1)',
     borderColor: 'rgba(0, 0, 0, 0.2)',

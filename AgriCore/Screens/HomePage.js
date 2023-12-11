@@ -31,9 +31,9 @@ export default class HomePage extends Component {
         <View style={styles.breadcrumbContainer}>
           <BreadCrumb />
         </View>
-        {/* <View style={styles.carouselContainer}>
+        <View style={styles.carouselContainer}>
           <CarouselComponent />
-        </View> */}
+        </View>
         <View style={styles.categoriesContainer}>
           <CategoriesComponent
             headingText="Top categories"

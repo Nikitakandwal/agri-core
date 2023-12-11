@@ -75,7 +75,8 @@ const App = () => {
 
     //   </NavigationContainer>
     // </GlobalContext.Provider>
-    <Filter />
+    // <Filter />
+    <Search />
   );
 };
 
