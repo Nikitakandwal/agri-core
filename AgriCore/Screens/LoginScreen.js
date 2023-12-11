@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   View,
   TextInput,
@@ -11,7 +11,9 @@ import {
 import axios from "axios";
 import Rectangle5 from "../assets/img/Rectangle5.png";
 import Rectangle6 from "../assets/img/Rectangle6.png";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
+import { BASE_URL } from "../src/Backend";
+import { GlobalContext } from "../App";
 
 const LoginScreen = () => {
   const navigation = useNavigation();
@@ -19,6 +21,7 @@ const LoginScreen = () => {
   const [otpPage, setOtpPage] = useState(false);
   const [otp, setOtp] = useState(["", "", "", ""]);
   const refs = otp.map((_, i) => React.createRef());
+  const { setLoggedInUser } = useContext(GlobalContext);
 
   const handleOtpChange = (index, value) => {
     setOtp((prevOtp) => {
@@ -35,15 +38,31 @@ const LoginScreen = () => {
 
   const sendVerificationCode = async () => {
     try {
+      setLoggedInUser(true)
+      return
       console.log({ phoneNumber });
-      const response = await axios.post(
-        "http://192.168.1.5:3000/send-verification-code",
-        {
-          phoneNumber: phoneNumber,
-        }
-      );
-
-      if (response.data.success) {
+      const data = {
+        phoneNumber: "917976114618",
+      };
+      // const response = await axios.post(
+      //   `${BASE_URL}/send-verification-code`,
+      //   {
+      //     method: 'POST',
+      //     headers: {
+      //       'Content-Type': 'application/json',
+      //     },
+      //     body: data,
+      //   }
+      // );
+      const response = await fetch(`${BASE_URL}/send-verification-code`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      console.log(response, "RES");
+      if (response.data?.success) {
         Alert.alert(
           "Verification Code Sent",
           "Check your phone for the verification code."
@@ -68,19 +87,18 @@ const LoginScreen = () => {
 
   const verifyOTP = async () => {
     try {
-      const otpNumber = parseInt(otp.join(''));
+      const otpNumber = parseInt(otp.join(""));
       console.log({ otpNumber });
-  
-      const response = await axios.post("http://192.168.1.5:3000/verify-otp", {
+
+      const response = await axios.post(`${BASE_URL}/verify-otp`, {
         phoneNumber: phoneNumber,
         otp: otpNumber.toString(), // Convert to string
       });
-  
+
       if (response.data.success) {
         Alert.alert("Verification Successful", "You are now logged in!");
-        navigation.navigate('HomePage');
+        navigation.navigate("HomePage");
       } else {
-        
         Alert.alert(
           "Error",
           "Verification failed. Please check the OTP and try again."
@@ -94,7 +112,6 @@ const LoginScreen = () => {
       );
     }
   };
-  
 
   const OtpInput = () => {
     return (
@@ -139,20 +156,32 @@ const LoginScreen = () => {
 
       {otpPage ? (
         <Text
-          style={{ fontSize: 20, color: "black", marginTop: 25, width: "80%" }}
+          style={{ fontSize: 20, color: "black", marginTop: 25, width: "80%", fontWeight: "500" }}
         >
           Verify the confirmation code
         </Text>
       ) : (
         <Text
-          style={{ fontSize: 20, color: "black", marginTop: 25, width: "80%" }}
+          style={{
+            fontSize: 20,
+            color: "black",
+            marginTop: 25,
+            width: "80%",
+            fontWeight: "500",
+          }}
         >
           Enter Your Contact Number
         </Text>
       )}
       {otpPage ? (
         <Text
-          style={{ fontSize: 14, color: "black", marginTop: 12, width: "80%" }}
+          style={{
+            fontSize: 14,
+            color: "black",
+            marginTop: 12,
+            width: "80%",
+            fontWeight: "400",
+          }}
         >
           Please enter the verification code received on your contact number.
         </Text>
@@ -165,7 +194,7 @@ const LoginScreen = () => {
       )}
       {otpPage && (
         <Text
-          style={{ fontSize: 14, color: "rgba(94, 87, 87, 0.6)", width: "80%" }}
+          style={{ fontSize: 14, color: "rgba(94, 87, 87, 0.6)", width: "80%", fontWeight: "400", marginTop: 10 }}
         >
           Contact Number: {phoneNumber}
         </Text>
@@ -175,7 +204,7 @@ const LoginScreen = () => {
         <View style={{ width: "100%" }}>
           <OtpInput />
           <View style={{ marginLeft: 35, marginTop: 20 }}>
-            <Text>Did not receive verification code?</Text>
+            <Text style={{ fontSize: 14, fontWeight: "400" }}>Did not receive verification code?</Text>
           </View>
           <View
             style={{
@@ -186,15 +215,20 @@ const LoginScreen = () => {
               marginTop: 10,
             }}
           >
-            <Text style={{ fontSize: 12, color: "#333333" }}>Resend Code</Text>
-            <Text style={{ fontSize: 12, color: "#333333" }}>
+            <Text style={{ fontSize: 12, color: "#333333", fontWeight: "500" }}>Resend Code</Text>
+            <Text style={{ fontSize: 12, color: "#333333", fontWeight: "500" }}>
               Request on Email
             </Text>
           </View>
         </View>
       ) : (
         <View
-          style={{ flexDirection: "row", alignItems: "center", marginTop: 10 }}
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            marginVertical: 20,
+          }}
         >
           <TouchableOpacity
             style={{
@@ -202,10 +236,18 @@ const LoginScreen = () => {
               alignItems: "center",
               borderBottomWidth: 1,
               borderColor: "black",
-              marginTop: 15,
+              // marginTop: 15,
             }}
           >
-            <Text style={{ fontSize: 14, marginRight: 10 }}>+91</Text>
+            <Text
+              style={{
+                fontSize: 18,
+                marginRight: 10,
+                fontWeight: "400",
+              }}
+            >
+              +91
+            </Text>
           </TouchableOpacity>
 
           <TextInput
@@ -214,8 +256,8 @@ const LoginScreen = () => {
               borderBottomWidth: 1,
               borderColor: "black",
               width: "65%",
-              fontSize: 14,
-              marginTop: 7,
+              fontSize: 18,
+              fontWeight: "400",
             }}
             placeholder="Mobile Number"
             keyboardType="phone-pad"
@@ -236,13 +278,13 @@ const LoginScreen = () => {
           }}
           onPress={verifyOTP}
         >
-          <Text style={{ color: "white" }}>Sign in</Text>
+          <Text style={{ color: "white", fontSize: 16, fontWeight: "600" }}>Sign in</Text>
         </TouchableOpacity>
       ) : (
         <TouchableOpacity
           style={{
             backgroundColor: "rgba(94, 87, 87, 0.7)",
-            width: 193,
+            width: "50%",
             height: 50,
             justifyContent: "center",
             alignItems: "center",
@@ -251,15 +293,16 @@ const LoginScreen = () => {
           }}
           onPress={sendVerificationCode}
         >
-          <Text style={{ color: "#ffffff" }}>Send Code</Text>
+          <Text style={{ color: "#ffffff", fontSize: 16, fontWeight: "600" }}>Send Code</Text>
         </TouchableOpacity>
       )}
-      <Text style={{ fontSize: 12, marginTop: 20 }}>
+      <Text style={{ fontSize: 12, marginTop: 20, fontWeight: "400" }}>
         Don't have an account?
       </Text>
 
       {otpPage ? (
         <TouchableOpacity
+          onPress={() => { navigation.navigate("RegistrationScreen"); }}
           style={{
             width: 165,
             height: 17,
@@ -272,7 +315,7 @@ const LoginScreen = () => {
             style={{
               color: "#444444",
               fontSize: 14,
-              fontWeight: 900,
+              fontWeight: 700,
             }}
           >
             Create New Account
@@ -280,6 +323,9 @@ const LoginScreen = () => {
         </TouchableOpacity>
       ) : (
         <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("RegistrationScreen");
+          }}
           style={{
             width: 253,
             height: 50,
@@ -291,7 +337,7 @@ const LoginScreen = () => {
             borderColor: "rgba(0, 0, 0, 0.2)",
           }}
         >
-          <Text style={{ color: "#333333" }}>Create an account</Text>
+          <Text style={{ color: "#333333", fontSize: 14, fontWeight: "500" }}>Create an account</Text>
         </TouchableOpacity>
       )}
     </View>

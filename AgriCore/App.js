@@ -1,5 +1,5 @@
 // App.js
-import React, { useState } from "react";
+import React, { createContext, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import LoginScreen from "./Screens/LoginScreen.js";
@@ -16,91 +16,66 @@ import Landing from "./Screens/Landing.js";
 import QuickOrder from "./Screens/QuickOrder.js";
 import AddAddress from "./Components/AddAddress.js";
 import SearchPage from "./Screens/SearchPage.js";
+import Search from "./Screens/Search.js";
+import Filter from "./Screens/Filter.js";
 
 const Stack = createStackNavigator();
+export const GlobalContext = createContext();
 
 const App = () => {
-  const [user, setUser] = useState(true);
+  const [user, setUser] = useState(false);
 
   const updateAuth = (value) => {
     setUser(value);
   };
 
-  if (!user) {
-    return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Landing"
-          component={Landing}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="LoginScreen"
-          component={LoginScreen}
-          options={{
-            headerShown: false,
-          }}
-        />
-          <Stack.Screen
-          name="RegistrationScreen"
-          component={RegistrationScreen}
-          options={{
-            headerShown: false,
-          }}
-        />
-      </Stack.Navigator>
-      </NavigationContainer>
-    );
-  }
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-      {/* <Stack.Screen
-          name="HomePage"
-          component={HomePage}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="CartPage"
-          component={CartPage}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="AddAddress"
-          component={AddAddress}
-          options={{
-            headerShown: false,
-          }}
-        /> */}
-        {/* <Stack.Screen
-          name="ProductsPage"
-          component={ProductsPage}
-          options={{
-            headerShown: false,
-          }}
-        /> */}
-         <Stack.Screen
-          name="CartPage"
-          component={CartPage}
-          options={{
-            headerShown: false,
-          }}/>
-        {/* <Stack.Screen
-          name="SearchPage"
-          component={SearchPage}
-          options={{
-            headerShown: false,
-          }}
-        /> */}
-      </Stack.Navigator>
-    </NavigationContainer>
+    // <GlobalContext.Provider
+    //   value={{
+    //     user: user,
+    //     setLoggedInUser: userObj => { setUser(userObj) },
+    //   }}>
+    //   <NavigationContainer>
+    //     {
+    //       !user ?
+    //         <Stack.Navigator>
+    //           <Stack.Screen
+    //             name="Landing"
+    //             component={Landing}
+    //             options={{
+    //               headerShown: false,
+    //             }}
+    //           />
+    //           <Stack.Screen
+    //             name="LoginScreen"
+    //             component={LoginScreen}
+    //             options={{
+    //               headerShown: false,
+    //             }}
+    //           />
+    //           <Stack.Screen
+    //             name="RegistrationScreen"
+    //             component={RegistrationScreen}
+    //             options={{
+    //               headerShown: false,
+    //             }}
+    //           />
+    //         </Stack.Navigator>
+    //         :
+    //         <Stack.Navigator>
+    //           <Stack.Screen
+    //             name="HomePage"
+    //             component={HomePage}
+    //             options={{
+    //               headerShown: false,
+    //             }} />
+    //         </Stack.Navigator>
+
+    //     }
+
+    //   </NavigationContainer>
+    // </GlobalContext.Provider>
+    <Filter />
   );
 };
 

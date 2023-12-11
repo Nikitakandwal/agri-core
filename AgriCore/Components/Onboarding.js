@@ -6,9 +6,10 @@ import { useNavigation } from '@react-navigation/native';
 const OnboardingScreen = () => {
   const navigation = useNavigation();
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(1);
 
   const handleIndexChanged = (index) => {
+    console.log(index, "I ma index");
     setCurrentIndex(index);
   };
 
@@ -58,7 +59,7 @@ const OnboardingScreen = () => {
 
         {/* Slide 3 */}
         <View style={styles.slideContainer}>
-        
+
           <Image
             source={require("../assets/img/image3.png")}
             style={styles.image}
@@ -74,7 +75,7 @@ const OnboardingScreen = () => {
 
         {/* Slide 4 */}
         <View style={styles.slideContainer}>
-         
+
           <Image
             source={require("../assets/img/image4.png")}
             style={styles.image}
@@ -87,78 +88,77 @@ const OnboardingScreen = () => {
             </Text>
 
             {currentIndex === 3 && (
-                  <TouchableOpacity
-                    style={styles.button}
-                    onPress={handleContinue}
-                  >
-                    <Text style={styles.buttonText}>Continue</Text>
-                  </TouchableOpacity>
-                )}
-              </View>
-            </View>
-          </Swiper>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={handleContinue}
+              >
+                <Text style={styles.buttonText}>Continue</Text>
+              </TouchableOpacity>
+            )}
+          </View>
         </View>
-      );
-    };
-    
-    export default OnboardingScreen;
-    
-    const styles = StyleSheet.create({
-      container: {
-        flex: 1,
-      },
-      slideContainer: {
-        flex: 1,
-      },
-      image: {
-        flex: 1,
-        width: "100%",
-        resizeMode: "cover",
-      },
-      bottomContainer: {
-        position: "absolute",
-        bottom: 0,
-        left: 0,
-        right: 0,
-        padding: 32,
-        backgroundColor: "white",
-        justifyContent: "center",
-        alignItems: "center",
-        borderTopLeftRadius: 50,
-        borderTopRightRadius: 50,
-      },
-      title: {
-        fontWeight: "900",
-        fontSize: 30,
-        marginBottom: 10,
-        color: "#266937",
-        textAlign: "center",
-        paddingLeft: 30,
-        paddingRight: 30,
-      },
-      description: {
-        fontWeight: "700",
-        textAlign: "center",
-        color: "#266937",
-        fontSize: 16,
-        paddingTop: 0,
-        paddingBottom: 35,
-        paddingLeft: 30,
-        paddingRight: 30,
-      },
-      button: {
-        width: 189,
-        height: 40,
-        backgroundColor: "#266937",
-        justifyContent: "center",
-        alignItems: "center",
-        marginBottom: 11, 
-        marginTop:-10,// Add spacing if needed
-        borderRadius: 10, // Add border radius if needed
-      },
-      buttonText: {
-        color: "white",
-        fontSize: 18,
-        fontWeight: "bold",
-      },
-    });
+      </Swiper>
+    </View>
+  );
+};
+
+export default OnboardingScreen;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  slideContainer: {
+    flex: 1,
+  },
+  image: {
+    flex: 1,
+    width: "100%",
+    resizeMode: "cover",
+  },
+  bottomContainer: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    padding: 32,
+    paddingBottom: 40,
+    backgroundColor: "white",
+    justifyContent: "center",
+    alignItems: "center",
+    borderTopLeftRadius: 50,
+    borderTopRightRadius: 50,
+    height: 261
+  },
+  title: {
+    fontWeight: "800",
+    fontSize: 24,
+    color: "#266937",
+    textAlign: "center",
+    letterSpacing: 2,
+    lineHeight: 30,
+    width: "100%"
+  },
+  description: {
+    fontWeight: "500",
+    textAlign: "center",
+    color: "#266937",
+    fontSize: 14,
+    paddingTop: 0,
+    marginVertical: 20,
+    width: "80%"
+  },
+  button: {
+    width: 189,
+    height: 40,
+    backgroundColor: "#266937",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 10, // Add border radius if needed
+  },
+  buttonText: {
+    color: "white",
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+});
