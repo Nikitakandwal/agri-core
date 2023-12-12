@@ -22,12 +22,10 @@ const ShopByBrands = ({ brandTitle, viewAllText, cardsData }) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: 206,
-    width: 335,
+    height: 206, 
     backgroundColor: '#ffffff',
     borderRadius: 10,
-    padding: 10,
-    
+    padding: 10,    
   },
   header: {
     flexDirection: 'row',

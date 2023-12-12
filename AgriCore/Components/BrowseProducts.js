@@ -27,17 +27,15 @@ export default BrowseProducts;
 const styles = StyleSheet.create({
    container:{
     height:632,
-    width:375,
     backgroundColor:'#D9D9D9',
     flex: 1,
     justifyContent: 'center', 
     alignItems: 'center',
+    alignContent:"center"
    },
    mainContent:{
     backgroundColor:'#ffffff',
-    height:565,
-    width:320,
-    marginRight:10,
+    height:565,  
     paddingTop:20,
     borderRadius:10,
    },

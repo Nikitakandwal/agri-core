@@ -4,10 +4,9 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 const BulkDeals = ({ topText, leftCardData, rightCardData }) => {
   return (
     <View style={styles.container}>
-      {/* Top Text */}
+    
       <Text style={styles.topText}>{topText}</Text>
-
-      {/* Bulk Deals */}
+ 
       <View style={styles.bulkDealsContainer}>
         <View style={styles.bulkDealsTextContainer}>
           <Text style={styles.bulkDealsText}>Bulk deals</Text>
@@ -17,11 +16,10 @@ const BulkDeals = ({ topText, leftCardData, rightCardData }) => {
         </TouchableOpacity>
       </View>
 <View style={{flexDirection:'row'}}>
-      {/* Left Card */}
+  
       <View style={styles.cardContainer}>
         <View style={styles.cardUpperHalf}>
-          {/* Images - Assuming leftCardData.images is an array of image sources */}
-          <Image source={leftCardData.images[0]} style={styles.cardImageTop} />
+           <Image source={leftCardData.images[0]} style={styles.cardImageTop} />
           <View style={styles.imageRow}>
             {leftCardData.images.slice(1, 6).map((image, index) => (
               <Image key={index} source={image} style={styles.cardImage} />
@@ -45,8 +43,7 @@ const BulkDeals = ({ topText, leftCardData, rightCardData }) => {
       </View> 
       <View style={styles.cardContainer}>
         <View style={styles.cardUpperHalf}>
-          {/* Images - Assuming leftCardData.images is an array of image sources */}
-          <Image source={leftCardData.images[0]} style={styles.cardImageTop} />
+           <Image source={leftCardData.images[0]} style={styles.cardImageTop} />
           <View style={styles.imageRow}>
             {leftCardData.images.slice(1, 6).map((image, index) => (
               <Image key={index} source={image} style={styles.cardImage} />
@@ -106,7 +103,7 @@ const styles = StyleSheet.create({
   },
   cardContainer: {
     height: 248,
-    width: 152,
+    width: "45%",
     borderRadius: 8,
     backgroundColor: '#FFFFFF',
     marginBottom: 30,

@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
   carouselContainer: {
     height: 201,
     position: 'relative',
+    width:width*1
   },
   slide: {
     flex: 1,
@@ -60,7 +61,7 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    width: '100%',
+    width: width*1
   },
   paginationContainer: {
     position: 'absolute',

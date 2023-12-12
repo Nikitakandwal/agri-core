@@ -18,6 +18,7 @@ import AddAddress from "./Components/AddAddress.js";
 import SearchPage from "./Screens/SearchPage.js";
 import Search from "./Screens/Search.js";
 import Filter from "./Screens/Filter.js";
+import AppTab from "./src/Navigation/AppTab.js";
 
 const Stack = createStackNavigator();
 export const GlobalContext = createContext();
@@ -76,7 +77,8 @@ const App = () => {
     //   </NavigationContainer>
     // </GlobalContext.Provider>
     // <Filter />
-    <Search />
+    // <Search />
+    <AppTab/>
   );
 };
 

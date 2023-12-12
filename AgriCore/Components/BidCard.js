@@ -1,6 +1,8 @@
 import React from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 import Rating from './Rating';
+
+const windowWidth = Dimensions.get("window").width;
 
 const StarIcon = () => (
   <Text style={styles.starIcon}>&#9733;</Text>
@@ -50,7 +52,7 @@ const BidCard = ({ imageSource, topLeftText, topRightText, bottomText, buttonTex
 const styles = StyleSheet.create({
   cardContainer: {
     height: 265,
-    width: 156,
+    width: windowWidth*0.44,
     flexDirection: 'row',
     marginLeft:15,
     

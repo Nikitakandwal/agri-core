@@ -27,21 +27,22 @@ const Warehouse = () => {
   const todaysEarnings = '$700';
 
   return (
-    <ScrollView>
-      <Header/>
+    <ScrollView> 
       <BreadCrumb/>
       <SearchBar placeholder={"Pesticides, herbicides"}/>
+      <View style={{marginVertical:"5%"}}>
       <CarouselComponent/>
+      </View>
       <Text>Sales statistics</Text>
-      <SalesStats
+      {/* <SalesStats
         todaySale={todaySale}
         pendingOrders={pendingOrders}
         totalStockUnits={totalStockUnits}
         leastSoldProduct={leastSoldProduct}
         todaysEarnings={todaysEarnings}
-      />
-      <Text>Sales History</Text>
-      <SalesHistory/>
+      /> */}
+      {/* <Text>Sales History</Text>
+      <SalesHistory/> */}
       <Text>Inventory</Text>
       <Inventory/>
       <RecentPurchases/>

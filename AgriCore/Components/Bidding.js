@@ -20,7 +20,6 @@ const Bidding = () => {
 const styles = StyleSheet.create({
   container: {
     height: 271,
-    width: 380,
     backgroundColor: '#ffffff',
     borderRadius: 10,
     padding: 20,
@@ -28,7 +27,6 @@ const styles = StyleSheet.create({
   },
   cardContainer: {
     height: 189,
-    width: 305,
     backgroundColor: '#686262',
     borderRadius: 10,
     justifyContent: 'center',
@@ -42,8 +40,7 @@ const styles = StyleSheet.create({
   lineContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: 20,
-    marginRight:40,
+    marginTop: 20, 
     marginLeft:4
   },
   leftText: {

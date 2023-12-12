@@ -7,9 +7,7 @@ import NewArrivalPage from "../Components/NewArrivalsPage";
 const NewArrivalsAll = () => {
   return (
     <ScrollView style={styles.container}>
-    <Header/>
-    <BreadCrumb/>
-    <SearchBar/>
+    <SearchBar placeholder={"Pesticides, herbicides"}/>
      <NewArrivalPage/>
     </ScrollView>
   )
@@ -21,5 +19,6 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: "white",
+      paddingTop:"5%"
     },
 })

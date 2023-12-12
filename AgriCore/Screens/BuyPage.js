@@ -38,11 +38,10 @@ export default class BuyPage extends Component {
   render() {
     return (
         <ScrollView style={styles.container}>
-        <Header/>
         <BreadCrumb/>
-        <SearchBar/>
+        <SearchBar placeholder={"Pesticides, herbicides"}/>
         <TopSearches searches={topSearchesData} title='Top Searches'/>
-        {/* <CarouselComponent/> */}
+        <CarouselComponent/>
         <TopSearches searches={quickOrderData} title='Quick order'/>
         <View style={styles.container2}>
         <ProductCards
@@ -119,7 +118,7 @@ export default class BuyPage extends Component {
       />
 
       </View>
-      <View style={{height:551, width:340, backgroundColor:"#ffffff", borderRadius:10, marginHorizontal:11, marginVertical:20}}>
+      <View style={{height:551, backgroundColor:"#ffffff", borderRadius:10, marginHorizontal:11, marginVertical:20}}>
     <NewsAndUpdate/>
     <BlogComponent/>
     </View>
@@ -159,7 +158,6 @@ const styles = StyleSheet.create({
         },
         container3:{
             height: 1214,
-            width:375,
             backgroundColor:'#F0F0F0'
         },
         bidcard:{
