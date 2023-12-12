@@ -23,6 +23,7 @@ import CreateProfiles from "./Components/CreateProfiles.js";
 import SupportPage from "./Screens/SupportPage.js";
 import Account from "./Screens/Account.js";
 import Trails from "./Screens/Trails.js";
+import Warehouse from "./Screens/Warehouse.js";
 
 const Stack = createStackNavigator();
 
@@ -32,8 +33,8 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator>
        <Stack.Screen
-          name="HomePage"
-          component={HomePage}
+          name="Warehouse"
+          component={Warehouse}
           options={{
             headerShown: false,
           }}

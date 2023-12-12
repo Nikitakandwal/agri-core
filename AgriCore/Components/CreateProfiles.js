@@ -446,5 +446,19 @@ import {
       color:"#333333",
       fontWeight:'bold'
     },
+    modalContainer: {
+      position: 'absolute',
+      width: 70,
+      backgroundColor: 'rgba(255, 255, 255, 0.9)',
+      borderColor: '#ccc',
+      borderWidth: 1,
+    },
+    modalItem: {
+      fontSize: 10,
+      color: '#000',
+      padding: 10,
+      borderBottomWidth: 1,
+      borderBottomColor: '#ccc',
+    },
   });
   

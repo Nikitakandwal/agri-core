@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "date-fns": "^2.30.0",
+    "react-navigation": "^5.0.0"
+  }
+}
