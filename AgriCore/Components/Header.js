@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { View, Text, StatusBar, Image, TouchableOpacity , Animated, StyleSheet} from "react-native";
+import { View, Text, StatusBar, Image, TouchableOpacity, Animated, StyleSheet } from "react-native";
 import { Icon } from "react-native-elements";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { SvgXml } from "react-native-svg";
@@ -24,7 +24,7 @@ const MySvg = () => {
 </svg> `;
 
   return (
-    <View style={{left:45}}>
+    <View style={{ left: 45 }}>
       <SvgXml xml={svgMarkup} width="79" height="54" />
     </View>
   );
@@ -66,7 +66,7 @@ const Header = () => {
 
 
   return (
-    <> 
+    <>
       <StatusBar
         backgroundColor={isSidebarOpen ? "#151716" : "#266937"}
         barStyle="light-content"

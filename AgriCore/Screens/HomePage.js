@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, ScrollView, StyleSheet, Image,TouchableOpacity, Text } from "react-native";
+import { View, ScrollView, StyleSheet, Image, TouchableOpacity, Text } from "react-native";
 import Header from "../Components/Header";
 import BreadCrumb from "../Components/BreadCrumb.js";
 import CategoriesComponent from "../Components/Categories.js";
@@ -60,7 +60,7 @@ export default class HomePage extends Component {
             card2Size={{ width: 152, height: 285 }}
             card2Image={require("../assets/img/Alika.png")}
             card2Text="Alika Insecticide"
-            cardTextColor="#F8F8F8" 
+            cardTextColor="#F8F8F8"
             card2Discount="34%"
             card2subtext="Syngeta"
             card2Rating={4.1}
@@ -69,8 +69,8 @@ export default class HomePage extends Component {
             card2OriginalPrice='299'
           />
         </View>
-        <View style={styles.popularCards}> 
-        <PopularCards headingText="Popular products"
+        <View style={styles.popularCards}>
+          <PopularCards headingText="Popular products"
             buttonText="View All"
             card1Size={{ width: 152, height: 195 }}
             card1Image={require("../assets/img/Glycel.png")}
@@ -79,33 +79,33 @@ export default class HomePage extends Component {
             card2Image={require("../assets/img/Coragen.png")}
             card2Text="Carogen Insecticide"
             cardTextColor="#F8F8F8" /></View>
-            <View style={styles.RecentlyViewed}>
-              <RecentlyViewed />
-            </View>
-            <View style={styles.container2}>
-      <Image
-        source={require('../assets/img/Poster.png')}
-        style={styles.image}
-      />
+        <View style={styles.RecentlyViewed}>
+          <RecentlyViewed />
+        </View>
+        <View style={styles.container2}>
+          <Image
+            source={require('../assets/img/Poster.png')}
+            style={styles.image}
+          />
 
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.clearanceButton}>
-          <Text style={styles.buttonText1}>Clearance deals</Text>
-        </TouchableOpacity>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity style={styles.clearanceButton}>
+              <Text style={styles.buttonText1}>Clearance deals</Text>
+            </TouchableOpacity>
 
-        <TouchableOpacity style={styles.biddingButton}>
-          <Text style={styles.buttonText2}>Bidding</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
-    
-    <FourCards/>
-    <View style={{height:40, width:'100%', backgroundColor:'#ffffff'}}></View>
-    <BrowseProducts/>
-    <View>
-      <BlogComponent/>
-      <Faqs/>
-    </View>
+            <TouchableOpacity style={styles.biddingButton}>
+              <Text style={styles.buttonText2}>Bidding</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        <FourCards />
+        <View style={{ height: 40, width: '100%', backgroundColor: '#ffffff' }}></View>
+        <BrowseProducts />
+        <View>
+          <BlogComponent />
+          <Faqs />
+        </View>
       </ScrollView>
     );
   }
@@ -131,17 +131,17 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     height: 430,
-    marginBottom:-30
+    marginBottom: -30
   },
-  popularCards:{
+  popularCards: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
     height: 280,
   },
-  RecentlyViewed:{
+  RecentlyViewed: {
     flex: 1,
-    marginBottom:20
+    marginBottom: 20
   },
   container2: {
     flex: 1,
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginHorizontal: 16,
     marginBottom: 25,
-    marginTop:30
+    marginTop: 30
   },
   clearanceButton: {
     width: '48%',
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#425343',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius:8
+    borderRadius: 8
   },
   biddingButton: {
     width: '48%',
@@ -174,16 +174,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 1,
     borderColor: 'rgba(0,0,0,0.1)',
-    borderRadius:8
+    borderRadius: 8
   },
   buttonText2: {
     fontSize: 14,
-    color: 'rgba(51, 51, 51, 0.7)' ,
+    color: 'rgba(51, 51, 51, 0.7)',
     fontWeight: 'bold'
   },
   buttonText1: {
     fontSize: 14,
-    color: '#ffffff' ,
+    color: '#ffffff',
     fontWeight: 'bold'
   },
 });

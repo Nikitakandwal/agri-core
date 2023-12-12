@@ -1,5 +1,5 @@
 // App.js
-import React, { useState } from "react";
+import React, { createContext, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import LoginScreen from "./Screens/LoginScreen.js";
@@ -16,31 +16,67 @@ import Landing from "./Screens/Landing.js";
 import QuickOrder from "./Screens/QuickOrder.js";
 import AddAddress from "./Components/AddAddress.js";
 import SearchPage from "./Screens/SearchPage.js";
-import OrderProfiles from "./Screens/OrderProfiles.js";
-import OrderProfile4 from "./Components/OrderProfile4.js";
-import OrderProfile5 from "./Components/OrderProfile5.js";
-import CreateProfiles from "./Components/CreateProfiles.js";
-import SupportPage from "./Screens/SupportPage.js";
-import Account from "./Screens/Account.js";
-import Trails from "./Screens/Trails.js";
-import Warehouse from "./Screens/Warehouse.js";
+import Search from "./Screens/Search.js";
+import Filter from "./Screens/Filter.js";
 
 const Stack = createStackNavigator();
+export const GlobalContext = createContext();
 
 const App = () => {
+  const [user, setUser] = useState(false);
+
+  const updateAuth = (value) => {
+    setUser(value);
+  };
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-       <Stack.Screen
-          name="Warehouse"
-          component={Warehouse}
-          options={{
-            headerShown: false,
-          }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    // <GlobalContext.Provider
+    //   value={{
+    //     user: user,
+    //     setLoggedInUser: userObj => { setUser(userObj) },
+    //   }}>
+    //   <NavigationContainer>
+    //     {
+    //       !user ?
+    //         <Stack.Navigator>
+    //           <Stack.Screen
+    //             name="Landing"
+    //             component={Landing}
+    //             options={{
+    //               headerShown: false,
+    //             }}
+    //           />
+    //           <Stack.Screen
+    //             name="LoginScreen"
+    //             component={LoginScreen}
+    //             options={{
+    //               headerShown: false,
+    //             }}
+    //           />
+    //           <Stack.Screen
+    //             name="RegistrationScreen"
+    //             component={RegistrationScreen}
+    //             options={{
+    //               headerShown: false,
+    //             }}
+    //           />
+    //         </Stack.Navigator>
+    //         :
+    //         <Stack.Navigator>
+    //           <Stack.Screen
+    //             name="HomePage"
+    //             component={HomePage}
+    //             options={{
+    //               headerShown: false,
+    //             }} />
+    //         </Stack.Navigator>
+
+    //     }
+
+    //   </NavigationContainer>
+    // </GlobalContext.Provider>
+    // <Filter />
+    <Search />
   );
 };
 

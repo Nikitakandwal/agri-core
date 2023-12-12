@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image, FlatList } from 'react-native';
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image, FlatList, ScrollView } from 'react-native';
+import { BASE_URL } from '../src/Backend';
 
 
 
@@ -16,9 +17,9 @@ const RegistrationScreen = () => {
   const [location, setLocation] = useState('');
   const [GSTIN, setGSTIN] = useState('');
   const [selectedItems, setSelectedItems] = useState([]);
-  
+
   const ProductSelectionScreen = ({ onClose }) => {
-  
+
     const products = [
       { id: '1', name: 'Product 1' },
       { id: '2', name: 'Product 2' },
@@ -28,8 +29,9 @@ const RegistrationScreen = () => {
       { id: '6', name: 'Product 6' },
       { id: '7', name: 'Product 7' },
       { id: '8', name: 'Product 8' },
+
     ];
-  
+
     const toggleItemSelection = (itemId) => {
       const isSelected = selectedItems.includes(itemId);
       if (isSelected) {
@@ -38,53 +40,59 @@ const RegistrationScreen = () => {
         setSelectedItems((prevSelected) => [...prevSelected, itemId]);
       }
     };
-  
+
     const renderItem = ({ item }) => {
       const isSelected = selectedItems.includes(item.id);
       return (
         <TouchableOpacity
-          style={[styles.itemContainer, isSelected && styles.selectedItem]}
+          style={[styles.itemContainer, isSelected && styles.selectedItem, {}]}
           onPress={() => toggleItemSelection(item.id)}
         >
-          <Text style={styles.itemText}>{item.name}</Text>
+          <Image style={{ width: 91, height: 91 }} source={require('./../assets/img/Glycel.png')} />
+          <Text style={[styles.itemText, { color: isSelected ? "white" : "black", marginVertical: 10 }]}>{item.name}</Text>
         </TouchableOpacity>
       );
     };
-  
+
     return (
-      <View style={styles.productSelectionContainer}>
+      <ScrollView style={styles.productSelectionContainer} showsVerticalScrollIndicator={false}>
         {/* Top 10% with color #266937 */}
         <View style={styles.topSection} />
-  
+
         {/* Heading */}
         <Text style={styles.heading}>Select any 5 products to continue</Text>
-  
+
         {/* Description */}
         <Text style={styles.description}>
           This will help us in understanding what you are looking to purchase.
         </Text>
-  
+
         {/* Product List */}
-        <FlatList
-          data={products}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-          numColumns={2}
-          contentContainerStyle={styles.productListContainer}
-        />
-  
+        <View style={{
+          justifyContent: "center", alignItems: "center", alignContent: "center", marginBottom: "50%"
+        }}>
+          <FlatList
+            data={products}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id}
+            numColumns={2}
+            contentContainerStyle={styles.productListContainer}
+          />
+
+        </View>
+
         {/* Proceed to Home Button */}
         <TouchableOpacity
           style={styles.proceedButton}
           onPress={() => {
             console.log('Proceed to Home with selected items:', selectedItems);
             onClose();
-             handleData()
+            handleData()
           }}
         >
           <Text style={styles.buttonText}>Proceed to Home</Text>
         </TouchableOpacity>
-      </View>
+      </ScrollView>
     );
   };
 
@@ -106,14 +114,14 @@ const RegistrationScreen = () => {
 
     try {
       // Send data to the backend
-      const response = await fetch('http://192.168.1.5:3000/register', {
+      const response = await fetch(`${BASE_URL}/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(registrationData),
       });
-
+      console.log(response, "tet");
       if (response.ok) {
         console.log('Registration successful');
         // Handle navigation or other actions after successful registration
@@ -165,14 +173,14 @@ const RegistrationScreen = () => {
             <View style={styles.inputContainer}>
               <Text style={styles.label}>Full Name</Text>
               <TextInput style={styles.input} value={fullName}
-          onChangeText={(text) => setFullName(text)} />
+                onChangeText={(text) => setFullName(text)} />
             </View>
 
             {/* Contact Number */}
             <View style={styles.inputContainer}>
               <Text style={styles.label}>Contact Number</Text>
-              <TextInput style={styles.input} value={contactNumber}
-          onChangeText={(text) => setContactNumber(text)} />
+              <TextInput style={styles.input} value={contactNumber} keyboardType='numeric' maxLength={10}
+                onChangeText={(text) => setContactNumber(text)} />
             </View>
 
             {/* Gender and City */}
@@ -180,20 +188,20 @@ const RegistrationScreen = () => {
               <View style={styles.inlineInputContainer}>
                 <Text style={styles.label} >Gender</Text>
                 <TextInput style={styles.inlineInput} value={gender}
-          onChangeText={(text) => setGender(text)} />
+                  onChangeText={(text) => setGender(text)} />
               </View>
               <View style={styles.inlineInputContainer}>
                 <Text style={styles.label}>City</Text>
                 <TextInput style={styles.inlineInput} value={city}
-          onChangeText={(text) => setCity(text)} />
+                  onChangeText={(text) => setCity(text)} />
               </View>
             </View>
 
             {/* Email Address (optional) */}
             <View style={styles.inputContainer}>
               <Text style={styles.label}>Email Address (optional)</Text>
-              <TextInput style={styles.input} value={emailAddress}
-          onChangeText={(text) => setEmailAddress(text)} />
+              <TextInput style={styles.input} value={emailAddress} keyboardType='email-address'
+                onChangeText={(text) => setEmailAddress(text)} />
             </View>
 
             {/* Continue Button (TouchableOpacity) */}
@@ -236,34 +244,34 @@ const RegistrationScreen = () => {
             <View style={styles.inputContainer}>
               <Text style={styles.label}>Shop Name</Text>
               <TextInput style={styles.input} value={shopName}
-          onChangeText={(text) => setShopName(text)}/>
+                onChangeText={(text) => setShopName(text)} />
             </View>
 
             {/* Recovery Contact Number */}
             <View style={styles.inputContainer}>
               <Text style={styles.label}>Recovery Contact Number</Text>
               <TextInput style={styles.input} value={recoveryContact}
-          onChangeText={(text) => setRecoveryContact(text)}/>
+                onChangeText={(text) => setRecoveryContact(text)} />
             </View>
 
             {/* Location */}
             <View style={styles.inputContainer}>
               <Text style={styles.label}>Location</Text>
               <TextInput style={styles.input} value={location}
-          onChangeText={(text) => setLocation(text)}/>
+                onChangeText={(text) => setLocation(text)} />
             </View>
 
             {/* GSTIN */}
             <View style={styles.inputContainer}>
               <Text style={styles.label}>GSTIN</Text>
               <TextInput style={styles.input} value={GSTIN}
-          onChangeText={(text) => setGSTIN(text)}/>
+                onChangeText={(text) => setGSTIN(text)} />
             </View>
 
             {/* Create Account Button (TouchableOpacity) */}
             <TouchableOpacity
               style={styles.button}
-              onPress={()=>{handleContinue();}}
+              onPress={() => { handleContinue(); }}
             >
               <Text style={styles.buttonText}>Create Account</Text>
             </TouchableOpacity>
@@ -287,10 +295,17 @@ const styles = StyleSheet.create({
     color: '#333333',
     opacity: 0.8,
     marginVertical: 10,
+    fontWeight: "700",
+    marginHorizontal: 15
   },
   messageText: {
     fontSize: 12,
     color: '#333333',
+    marginHorizontal: 15,
+    fontWeight: "500",
+    color: "#333333",
+    lineHeight: 16
+
   },
   formContainer: {
     padding: 20,
@@ -308,7 +323,8 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   label: {
-    fontSize: 16,
+    fontSize: 14,
+    fontWeight: "500",
     color: '#333333',
     opacity: 0.3,
     marginBottom: 5,
@@ -331,23 +347,26 @@ const styles = StyleSheet.create({
     backgroundColor: '#8E8989',
     justifyContent: 'center',
     alignItems: 'center',
+    alignSelf: "center",
     marginTop: 20,
+    borderRadius: 10
   },
   buttonText: {
     color: 'white',
-    fontSize: 18,
+    fontSize: 16,
+    fontWeight: "600"
   },
   imageContainer: {
     alignItems: 'center',
     marginTop: 20,
   },
-  imagebackground:{
+  imagebackground: {
     width: 71,
     height: 71,
-    backgroundColor:'#D9D9D9',
-    borderRadius:50,
-    justifyContent:'center',
-    alignItems:'center'
+    backgroundColor: '#D9D9D9',
+    borderRadius: 50,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   profileImage: {
     width: 40,
@@ -362,14 +381,18 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   heading: {
-    fontSize: 20,
+    fontSize: 16,
+    fontWeight: "700",
     fontWeight: 'bold',
     marginVertical: 10,
+    marginHorizontal: 15
   },
   description: {
-    fontSize: 16,
+    fontSize: 12,
+    fontWeight: "400",
     color: '#333333',
     marginBottom: 20,
+    marginHorizontal: 15
   },
   productListContainer: {
     justifyContent: 'center',
@@ -377,18 +400,24 @@ const styles = StyleSheet.create({
   },
   itemContainer: {
     width: '40%',
+
     margin: 10,
     padding: 15,
-    borderWidth: 1,
+    // borderWidth: 1,
     borderColor: '#333333',
     borderRadius: 8,
     alignItems: 'center',
+    // borderWidth: 1,
+    width: "45%"
   },
   selectedItem: {
     backgroundColor: '#266937',
+    width: "45%",
+    // borderWidth: 1
   },
   itemText: {
-    fontSize: 16,
+    fontSize: 10,
+    fontWeight: "400",
     color: '#333333',
   },
   proceedButton: {
@@ -398,11 +427,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
-    marginTop: 20,
+    // marginTop: 20,
+    borderRadius: 10,
+    position: "absolute",
+    bottom: 30
   },
   buttonText: {
     color: 'white',
-    fontSize: 18,
+    fontSize: 16,
+    fontWeight: "600"
   },
 });
 
