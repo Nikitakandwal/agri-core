@@ -173,7 +173,6 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     width:"48%",
     elevation: 5,
-    // For iOS
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.5,
