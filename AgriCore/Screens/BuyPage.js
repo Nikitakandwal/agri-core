@@ -37,22 +37,12 @@ export default class BuyPage extends Component {
 
   render() {
     return (
-<<<<<<< HEAD
       <ScrollView style={styles.container}>
-        <Header />
         <BreadCrumb />
-        <SearchBar />
+        <SearchBar placeholder={"Pesticides, herbicides"} />
         <TopSearches searches={topSearchesData} title='Top Searches' />
-        {/* <CarouselComponent/> */}
+        <CarouselComponent />
         <TopSearches searches={quickOrderData} title='Quick order' />
-=======
-        <ScrollView style={styles.container}>
-        <BreadCrumb/>
-        <SearchBar placeholder={"Pesticides, herbicides"}/>
-        <TopSearches searches={topSearchesData} title='Top Searches'/>
-        <CarouselComponent/>
-        <TopSearches searches={quickOrderData} title='Quick order'/>
->>>>>>> fc6b3833c0a72afaae36192232608ca029ed4399
         <View style={styles.container2}>
           <ProductCards
             headingText="New Arrivals"
@@ -127,9 +117,8 @@ export default class BuyPage extends Component {
               tripText="Free Malaysia Trip"
             />
 
-<<<<<<< HEAD
           </View>
-          <View style={{ height: 551, width: 340, backgroundColor: "#ffffff", borderRadius: 10, marginHorizontal: 11, marginVertical: 20 }}>
+          <View style={{ height: 551, backgroundColor: "#ffffff", borderRadius: 10, marginHorizontal: 11, marginVertical: 20 }}>
             <NewsAndUpdate />
             <BlogComponent />
           </View>
@@ -149,35 +138,11 @@ export default class BuyPage extends Component {
         />
         <Faqs />
       </ScrollView>
-=======
-      </View>
-      <View style={{height:551, backgroundColor:"#ffffff", borderRadius:10, marginHorizontal:11, marginVertical:20}}>
-    <NewsAndUpdate/>
-    <BlogComponent/>
-    </View>
-    </View>
-    <BulkDeals
-  topText="Extra discounts on bulk deals to get more with less pay"
-  leftCardData={{
-    images: [require('../assets/img/img.png') ,],
-    description: "Product description",
-    price: "$19.99",
-  }}
-  rightCardData={{
-    images: [require('../assets/img/img1.png')],
-    description: "Product description",
-    price: "$19.99",
-  }}
-     />
-    <Faqs/>
-        </ScrollView>
->>>>>>> fc6b3833c0a72afaae36192232608ca029ed4399
     )
   }
 }
 
 const styles = StyleSheet.create({
-<<<<<<< HEAD
   container: {
     flex: 1,
     backgroundColor: "white",
@@ -193,7 +158,6 @@ const styles = StyleSheet.create({
   },
   container3: {
     height: 1214,
-    width: 375,
     backgroundColor: '#F0F0F0'
   },
   bidcard: {
@@ -201,28 +165,4 @@ const styles = StyleSheet.create({
     marginLeft: 3,
     marginTop: 25
   }
-=======
-        container: {
-          flex: 1,
-          backgroundColor: "white",
-        },
-        container2:{
-            backgroundColor:'#F0F0F0',
-            paddingTop:20,
-            paddingBottom:20
-        },
-        brands:{
-            paddingTop:14,
-            height: 170
-        },
-        container3:{
-            height: 1214,
-            backgroundColor:'#F0F0F0'
-        },
-        bidcard:{
-              flexDirection:'row',
-             marginLeft:3,
-             marginTop:25
-        }
->>>>>>> fc6b3833c0a72afaae36192232608ca029ed4399
 })

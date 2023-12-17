@@ -10,9 +10,6 @@ import LoginScreen from '../../Screens/LoginScreen';
 const Stack = createStackNavigator();
 
 const AuthStack = () => {
-    console.log('====================================');
-    console.log("Hi");
-    console.log('====================================');
     return (
         <Stack.Navigator screenOptions={{
             headerShown: false
