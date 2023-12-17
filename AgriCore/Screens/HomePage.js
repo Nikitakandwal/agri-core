@@ -11,6 +11,7 @@ import BrowseProducts from "../Components/BrowseProducts.js";
 import BlogComponent from "../Components/Blogs.js";
 import Faqs from "../Components/Faqs.js";
 import CarouselComponent from "../Components/CarouselComponent.js";
+import { useNavigation } from "@react-navigation/native";
 
 export default class HomePage extends Component {
   render() {
@@ -27,6 +28,7 @@ export default class HomePage extends Component {
 
     return (
       <ScrollView style={styles.container}>
+        <Header onPress={() => { this.props.navigation.navigate('CartPage') }} />
         <View style={styles.breadcrumbContainer}>
           <BreadCrumb />
         </View>
@@ -35,6 +37,7 @@ export default class HomePage extends Component {
         </View>
         <View style={styles.categoriesContainer}>
           <CategoriesComponent
+            onPress={() => { this.props.navigation.navigate('BuyPage') }}
             headingText="Top categories"
             headingStyle={{ color: "#414141", fontSize: 18 }}
             buttonText="View all"
@@ -47,6 +50,7 @@ export default class HomePage extends Component {
           <ProductCards
             headingText="New Arrivals"
             buttonText="View All"
+            onPress={() => { this.props.navigation.navigate('ProductsCatalogPage') }}
             card1Size={{ width: 152, height: 285 }}
             card1Image={require("../assets/img/Navito.png")}
             card1Text="Navito Fungicide"

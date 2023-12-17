@@ -31,6 +31,7 @@ const ProductCards = ({
   card1OriginalPrice,
   card2DiscountPrice,
   card2OriginalPrice,
+  onPress
 
 }) => {
   const [CartAdded, setCartAdded] = useState(false)
@@ -57,12 +58,12 @@ const ProductCards = ({
     <View style={styles.container}>
       <View style={styles.headerContainer}>
         <Text style={styles.heading}>{headingText}</Text>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={onPress}>
           <Text style={styles.buttonText}>{buttonText}</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.cardsContainer}>
-        <View style={[styles.card, { width: card1Size.width, height: card1Size.height }]}>
+        <TouchableOpacity onPress={onPress} style={[styles.card, { width: card1Size.width, height: card1Size.height }]}>
           <Image source={card1Image} style={[styles.cardImage, card1ImageStyle]} />
           <Image source={require("../assets/img/Union.png")} style={styles.overlayImage} />
           <Text style={styles.overlayText}>{card1Discount} off</Text>
@@ -91,7 +92,7 @@ const ProductCards = ({
               </View>
           }
           <Text style={{ textAlign: 'center', color: 'rgba(51, 51, 51, 0.5)', fontSize: 12, marginTop: 6 }}>Free delivery applicable</Text>
-        </View>
+        </TouchableOpacity>
         <View style={{ marginHorizontal: 8 }} />
         <View style={[styles.card, { width: card2Size.width, height: card2Size.height }]}>
           <Image source={card2Image} style={[styles.cardImage, card2ImageStyle]} />

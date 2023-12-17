@@ -7,6 +7,7 @@ const CategoriesComponent = ({
   buttonText,
   buttonStyle,
   cardData,
+  onPress
 }) => {
   return (
     <View style={styles.container}>
@@ -19,9 +20,9 @@ const CategoriesComponent = ({
       </View>
 
       {/* Cards */}
-      <View style={styles.cardsContainer}>
+      <View style={styles.cardsContainer} onPress={onPress}>
         {[0, 1, 2, 3].map((index) => (
-          <View key={index} style={styles.column}>
+          <TouchableOpacity key={index} style={styles.column} onPress={onPress}>
             {cardData.slice(index * 2, (index + 1) * 2).map((card, cardIndex) => (
               <View key={cardIndex} style={[styles.card, card.cardStyle]}>
                 <Image
@@ -31,7 +32,7 @@ const CategoriesComponent = ({
                 <Text style={[styles.cardText, card.textStyle]}>{card.text}</Text>
               </View>
             ))}
-          </View>
+          </TouchableOpacity>
         ))}
       </View>
     </View>

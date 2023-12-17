@@ -45,6 +45,7 @@ export default class BuyPage extends Component {
         <TopSearches searches={quickOrderData} title='Quick order' />
         <View style={styles.container2}>
           <ProductCards
+            onPress={() => { this.props.navigation.navigate('ProductPage') }}
             headingText="New Arrivals"
             buttonText="View All"
             card1Size={{ width: 152, height: 315 }}

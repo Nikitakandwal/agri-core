@@ -37,7 +37,7 @@ const MySvg = () => {
     </View>
   );
 };
-const Header = () => {
+const Header = ({ onPress }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const sidebarWidth = 284;
@@ -89,7 +89,7 @@ const Header = () => {
             style={styles.headerIcon}
           />
           <Icon name="bell" type="font-awesome" color="white" />
-          <FontAwesome5 name="shopping-cart" size={24} color="white" />
+          <FontAwesome5 name="shopping-cart" size={24} color="white" onPress={onPress} />
         </View>
       </View>
 
@@ -102,47 +102,47 @@ const Header = () => {
               source={require("../assets/icons/closeIcon.png")}
               style={styles.closeIcon}
             />
-            <View style={{marginTop:"20%"}}>
-              <TouchableOpacity  style={{flexDirection:"row", marginTop:"6%", marginBottom:"5%", marginLeft:"5%", width:"80%"}}>
-                <Icon name="play-circle" type="font-awesome" color="white" size={27}/>
+            <View style={{ marginTop: "20%" }}>
+              <TouchableOpacity style={{ flexDirection: "row", marginTop: "6%", marginBottom: "5%", marginLeft: "5%", width: "80%" }}>
+                <Icon name="play-circle" type="font-awesome" color="white" size={27} />
                 <Text style={styles.opt}>How Agricore app works?</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={{flexDirection:"row", marginTop:"6%", marginBottom:"5%", marginLeft:"5%", width:"80%"}}>
-                <Icon name="phone-in-talk" type="materialIcons" color="white" size={27}/>
+              <TouchableOpacity style={{ flexDirection: "row", marginTop: "6%", marginBottom: "5%", marginLeft: "5%", width: "80%" }}>
+                <Icon name="phone-in-talk" type="materialIcons" color="white" size={27} />
                 <Text style={styles.opt}>Book an apointment with expert</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity style={{flexDirection:"row", marginTop:"6%", marginBottom:"5%", marginLeft:"5%", width:"80%"}}>
-                <Icon name="wechat" type="font-awesome" color="white" size={27}/>
+              <TouchableOpacity style={{ flexDirection: "row", marginTop: "6%", marginBottom: "5%", marginLeft: "5%", width: "80%" }}>
+                <Icon name="wechat" type="font-awesome" color="white" size={27} />
                 <Text style={styles.opt}>Chat to solve problem</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity style={{flexDirection:"row", marginTop:"6%", marginBottom:"5%", marginLeft:"5%", width:"80%"}}>
-                <Icon name="thumbs-up-down" type="MaterialCommunityIcons" color="white" size={27}/>
+              <TouchableOpacity style={{ flexDirection: "row", marginTop: "6%", marginBottom: "5%", marginLeft: "5%", width: "80%" }}>
+                <Icon name="thumbs-up-down" type="MaterialCommunityIcons" color="white" size={27} />
                 <Text style={styles.opt}>Rate Agricore app</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity style={{flexDirection:"row", marginTop:"6%", marginBottom:"5%", marginLeft:"5%", width:"80%"}}>
-                <Icon name="language" type="font-awesome" color="white" size={27}/>
+              <TouchableOpacity style={{ flexDirection: "row", marginTop: "6%", marginBottom: "5%", marginLeft: "5%", width: "80%" }}>
+                <Icon name="language" type="font-awesome" color="white" size={27} />
                 <Text style={styles.opt}>Change Language</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity style={{flexDirection:"row", marginTop:"6%", marginBottom:"5%", marginLeft:"5%", width:"80%"}}>
-                <Icon name="person-add" type="ionicons" color="white" size={27}/>
+              <TouchableOpacity style={{ flexDirection: "row", marginTop: "6%", marginBottom: "5%", marginLeft: "5%", width: "80%" }}>
+                <Icon name="person-add" type="ionicons" color="white" size={27} />
                 <Text style={styles.opt}>Invite friends</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity style={{flexDirection:"row", marginTop:"6%", marginBottom:"5%", marginLeft:"5%", width:"80%"}}>
-                <Icon name="share-alt" type="font-awesome" color="white" size={27}/>
+              <TouchableOpacity style={{ flexDirection: "row", marginTop: "6%", marginBottom: "5%", marginLeft: "5%", width: "80%" }}>
+                <Icon name="share-alt" type="font-awesome" color="white" size={27} />
                 <Text style={styles.opt}>Share Agricore app</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={{flexDirection:"row", marginTop:"6%", marginBottom:"5%", marginLeft:"5%", width:"80%"}}>
-                <Icon name="lightbulb" type="foundation" color="white" size={27}/>
+              <TouchableOpacity style={{ flexDirection: "row", marginTop: "6%", marginBottom: "5%", marginLeft: "5%", width: "80%" }}>
+                <Icon name="lightbulb" type="foundation" color="white" size={27} />
                 <Text style={styles.opt}>Suggestion</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity style={{flexDirection:"row", marginTop:"6%", marginBottom:"5%", marginLeft:"5%", width:"80%"}}>
-                <Icon name="logout" type="MaterialCommunityIcons" color="white" size={27}/>
+              <TouchableOpacity style={{ flexDirection: "row", marginTop: "6%", marginBottom: "5%", marginLeft: "5%", width: "80%" }}>
+                <Icon name="logout" type="MaterialCommunityIcons" color="white" size={27} />
                 <Text style={styles.opt}>Logout</Text>
               </TouchableOpacity>
             </View>
@@ -193,8 +193,8 @@ const styles = StyleSheet.create({
   },
   opt: {
     color: "#FFFFFF",
-    fontSize:17,
-    paddingLeft:"7%"
+    fontSize: 17,
+    paddingLeft: "7%"
   },
 });
 

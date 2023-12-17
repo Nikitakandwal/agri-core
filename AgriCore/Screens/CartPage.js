@@ -10,7 +10,7 @@ import {
 import React, { useState } from "react";
 import Header from "../Components/Header";
 import StatusBar from "../Components/CartStatusBar";
-import Icon from "react-native-vector-icons/FontAwesome5"; 
+import Icon from "react-native-vector-icons/FontAwesome5";
 import UpiPaymentSection from "../Components/Upi";
 import Wallets from "../Components/Wallets";
 import Slider from "@react-native-community/slider";
@@ -31,12 +31,12 @@ const ListItem = ({ onSelect, isSelected }) => {
     <View
       style={{
         height: 78,
-        width: 325,  
+        width: 325,
         backgroundColor: isSelected ? '#6A9D6D' : '#F1F1F1',
         marginVertical: '2%',
-        borderRadius:6,
-        borderColor: isSelected?"#000000":"#33333320",
-        borderWidth:1
+        borderRadius: 6,
+        borderColor: isSelected ? "#000000" : "#33333320",
+        borderWidth: 1
       }}
     >
       <View style={{ flexDirection: 'row' }}>
@@ -66,13 +66,13 @@ const ListItem = ({ onSelect, isSelected }) => {
             />
           )}
         </TouchableOpacity>
-    <View>
-      <View style={{flexDirection:"row", width:133, marginVertical:"5%"}}>
-      <Text style={{fontSize:12, fontWeight:"bold", color: isSelected ? '#FFFFFF' : '#333333'}}>Standard</Text>
-      <Text style={{fontSize:12, color: isSelected ? '#FFFFFF' : '#333333'}}> - Get the package delivered by 18/08/23</Text>
-      </View>
-      <Text style={{fontWeight:"bold", color: isSelected ? '#FFFFFF' : '#333333'}}>₹2000</Text>
-    </View>
+        <View>
+          <View style={{ flexDirection: "row", width: 133, marginVertical: "5%" }}>
+            <Text style={{ fontSize: 12, fontWeight: "bold", color: isSelected ? '#FFFFFF' : '#333333' }}>Standard</Text>
+            <Text style={{ fontSize: 12, color: isSelected ? '#FFFFFF' : '#333333' }}> - Get the package delivered by 18/08/23</Text>
+          </View>
+          <Text style={{ fontWeight: "bold", color: isSelected ? '#FFFFFF' : '#333333' }}>₹2000</Text>
+        </View>
       </View>
     </View>
   );
@@ -88,7 +88,7 @@ const RangeSlider = () => {
   };
 
   return (
-    <View style={{ margin: 20 }}> 
+    <View style={{ margin: 20 }}>
       <Slider
         style={{ width: '100%', height: 40 }}
         minimumValue={0}
@@ -152,227 +152,229 @@ const savedCardsData = [
   },
 ];
 
-const CartPage = () => {
-  
+const CartPage = ({ navigation }) => {
 
-  const Checkout = () =>{
-   return( <View>
-     <View style={{marginHorizontal:"5%"}}><Text style={{color:"#333333", fontSize:16, fontWeight:"600"}}>Choose Delivery options</Text>
-     <CheckList/>
-     <View style={{marginVertical:"5%"}}>
-     <Text style={{color:"#333333", fontSize:16, fontWeight:"600", marginVertical:"3%"}}>Payout Summary</Text>
-      <CartSummary/>
-      </View>
-      <View style={{height:91, width:325, backgroundColor:"FBFBFB", borderColor:"#00000010", borderWidth:1, borderRadius:10, justifyContent:"center"}}>
-        <Text style={{color:"#333333", fontWeight:"700", marginHorizontal:"5%"}}>You have saved ₹1250 on this order</Text>
-        <Text style={{fontSize:10, color:"#333333", width:270, marginHorizontal:"5%", marginTop:"2%"}}>₹100 cashback points will be credited to your account upon delivery </Text>
-      </View>
-      
-     </View> 
-     <View style={{backgroundColor:"#EFF6ED", height:70, flexDirection:"row", justifyContent:"space-around", paddingVertical:"4%"}}>
-          <Text style={{width:"35%", color:"#525252", fontSize:12, fontWeight:'500'}}>
-            Billed to Aditya singh{" "} 
-            <Text style={{color:"#425343", fontSize:14, fontWeight:'700'}}>154 - A, Delhi</Text>
-          </Text>
-          <TouchableOpacity style={{marginVertical:"2%" }}><Text style={{color:"#425343", fontSize:14, fontWeight:'900'}}>Change</Text></TouchableOpacity>
+
+  const Checkout = () => {
+    return (<View>
+      <View style={{ marginHorizontal: "5%" }}><Text style={{ color: "#333333", fontSize: 16, fontWeight: "600" }}>Choose Delivery options</Text>
+        <CheckList />
+        <View style={{ marginVertical: "5%" }}>
+          <Text style={{ color: "#333333", fontSize: 16, fontWeight: "600", marginVertical: "3%" }}>Payout Summary</Text>
+          {/* <CartSummary /> */}
         </View>
-        <View style={styles.section}>
-      <TouchableOpacity style={styles.btns} activeOpacity={0.7}>
-        
-      <Text style={{color:'#FFFFFF', fontSize:12}}>Payable Amount</Text>
-        <Text style={styles.btnsText}>₹2640</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.buttonQuickOrder} activeOpacity={0.7}>
-        <Text style={styles.quickBtnText}>Proceed to pay</Text>
-      </TouchableOpacity>
+        <View style={{ height: 91, width: 325, backgroundColor: "FBFBFB", borderColor: "#00000010", borderWidth: 1, borderRadius: 10, justifyContent: "center" }}>
+          <Text style={{ color: "#333333", fontWeight: "700", marginHorizontal: "5%" }}>You have saved ₹1250 on this order</Text>
+          <Text style={{ fontSize: 10, color: "#333333", width: 270, marginHorizontal: "5%", marginTop: "2%" }}>₹100 cashback points will be credited to your account upon delivery </Text>
+        </View>
+
+      </View>
+      <View style={{ backgroundColor: "#EFF6ED", height: 70, flexDirection: "row", justifyContent: "space-around", paddingVertical: "4%" }}>
+        <Text style={{ width: "35%", color: "#525252", fontSize: 12, fontWeight: '500' }}>
+          Billed to Aditya singh{" "}
+          <Text style={{ color: "#425343", fontSize: 14, fontWeight: '700' }}>154 - A, Delhi</Text>
+        </Text>
+        <TouchableOpacity onPress={() => { navigation.navigate("AddAddress") }} style={{ marginVertical: "2%" }}><Text style={{ color: "#425343", fontSize: 14, fontWeight: '900' }}>Change</Text></TouchableOpacity>
+      </View>
+      <View style={styles.section}>
+        <TouchableOpacity style={styles.btns} activeOpacity={0.7}>
+
+          <Text style={{ color: '#FFFFFF', fontSize: 12 }}>Payable Amount</Text>
+          <Text style={styles.btnsText}>₹2640</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.buttonQuickOrder} activeOpacity={0.7}>
+          <Text style={styles.quickBtnText}>Proceed to pay</Text>
+        </TouchableOpacity>
+      </View>
     </View>
-     </View>
-  )}
+    )
+  }
 
   return (
     <ScrollView style={styles.container}>
       <Header />
       <StatusBar />
-      <Cart savings={savings} noOfProductsInCart={noOfProductsInCart} size={size} deliveryDate={deliveryDate}  quan={quan} discountedPrice={discountedPrice} originalCost={originalCost}/>
-      {/* <Checkout/> */}
-    {/* <Payment/> */}
+      <Cart savings={savings} noOfProductsInCart={noOfProductsInCart} size={size} deliveryDate={deliveryDate} quan={quan} discountedPrice={discountedPrice} originalCost={originalCost} />
+      <Checkout />
+      {/* <Payment/> */}
     </ScrollView>
   );
 };
 
-const Payment = () =>{
+const Payment = () => {
   const [isChecked, setChecked] = useState(false);
 
   const handleCheck = () => {
     setChecked(!isChecked);
   };
 
-  return(
+  return (
     <View>
-    <View>
-    <View
-    style={{
-      flexDirection: "row",
-      height: 65,
-      width: "90%",
-      backgroundColor: "#D9D9D910",
-      borderRadius: 15,
-      marginHorizontal: "5%",
-      borderColor: "#00000010",
-      borderWidth: 1,
-      justifyContent: "space-between",
-      alignItems: "center",
-      marginBottom: "7%",
-    }}
-  >
-    <Text
-      style={{
-        fontSize: 12,
-        color: "#425343",
-        fontWeight: "bold",
-        width: 150,
-        marginHorizontal: "3%",
-      }}
-    >
-      Payable Amount: 2640
-    </Text>
-    <TouchableOpacity>
-      <Text
-        style={{
-          fontSize: 10,
-          color: "#425343",
-          width: 151,
-          marginHorizontal: "16%",
-        }}
-      >
-        View price breakage &gt;
-      </Text>
-    </TouchableOpacity>
-  </View>
-
-  <View
-    style={{
-      height: isChecked? 590: 126,
-      width: "90%",
-      backgroundColor:"#ECFFF530",
-      borderRadius: 15,
-      marginHorizontal: "5%",
-      borderColor: "#33C5E525",
-      borderWidth: 1, 
-      marginBottom: "4%",
-      paddingVertical: "7%",
-    }}
-  >
-     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-      <TouchableOpacity
-        onPress={handleCheck}
-        style={{
-          backgroundColor:   '#FFFFFF',
-          borderColor: '#00000040',
-          borderWidth: 0.5,
-          borderRadius: 50,
-          height: 13,
-          width: 13,
-          marginVertical: '2%',
-          marginHorizontal: '3%',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        {isChecked && (
-          <View
-            style={{
-              backgroundColor: '#000000',
-              borderRadius: 50,
-              height: 8,
-              width: 8,
-            }}
-          />
-        )}
-      </TouchableOpacity>
-
-      <Text style={{ fontSize: 20, color: '#425343' }}>
-        <Text style={{ fontWeight: 'bold' }}>Split</Text> Pay
-      </Text>
-
-    </View>
-    <View style={{
-        marginHorizontal: "10%"}}>
-    <Text
-      style={{
-        color: "#3B4A61",
-        width: 258,
-        height: 34,
-      }}
-    >
-
-      <Text style={{ fontWeight: "bold" }}>Pay 30% upfront and </Text>rest
-      amount in the interest of 3 6 or 9 monts. 
-    </Text>
-    
-    {isChecked && (
       <View>
-        <Text style={{ fontSize: 12, color: '#425343', marginVertical:"4%" }}>
-         <Text style={{fontWeight:"800"}}> Lowest interest rate</Text> part payment.
-        </Text>
+        <View
+          style={{
+            flexDirection: "row",
+            height: 65,
+            width: "90%",
+            backgroundColor: "#D9D9D910",
+            borderRadius: 15,
+            marginHorizontal: "5%",
+            borderColor: "#00000010",
+            borderWidth: 1,
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: "7%",
+          }}
+        >
+          <Text
+            style={{
+              fontSize: 12,
+              color: "#425343",
+              fontWeight: "bold",
+              width: 150,
+              marginHorizontal: "3%",
+            }}
+          >
+            Payable Amount: 2640
+          </Text>
+          <TouchableOpacity>
+            <Text
+              style={{
+                fontSize: 10,
+                color: "#425343",
+                width: 151,
+                marginHorizontal: "16%",
+              }}
+            >
+              View price breakage &gt;
+            </Text>
+          </TouchableOpacity>
+        </View>
+
+        <View
+          style={{
+            height: isChecked ? 590 : 126,
+            width: "90%",
+            backgroundColor: "#ECFFF530",
+            borderRadius: 15,
+            marginHorizontal: "5%",
+            borderColor: "#33C5E525",
+            borderWidth: 1,
+            marginBottom: "4%",
+            paddingVertical: "7%",
+          }}
+        >
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <TouchableOpacity
+              onPress={handleCheck}
+              style={{
+                backgroundColor: '#FFFFFF',
+                borderColor: '#00000040',
+                borderWidth: 0.5,
+                borderRadius: 50,
+                height: 13,
+                width: 13,
+                marginVertical: '2%',
+                marginHorizontal: '3%',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              {isChecked && (
+                <View
+                  style={{
+                    backgroundColor: '#000000',
+                    borderRadius: 50,
+                    height: 8,
+                    width: 8,
+                  }}
+                />
+              )}
+            </TouchableOpacity>
+
+            <Text style={{ fontSize: 20, color: '#425343' }}>
+              <Text style={{ fontWeight: 'bold' }}>Split</Text> Pay
+            </Text>
+
+          </View>
+          <View style={{
+            marginHorizontal: "10%"
+          }}>
+            <Text
+              style={{
+                color: "#3B4A61",
+                width: 258,
+                height: 34,
+              }}
+            >
+
+              <Text style={{ fontWeight: "bold" }}>Pay 30% upfront and </Text>rest
+              amount in the interest of 3 6 or 9 monts.
+            </Text>
+
+            {isChecked && (
+              <View>
+                <Text style={{ fontSize: 12, color: '#425343', marginVertical: "4%" }}>
+                  <Text style={{ fontWeight: "800" }}> Lowest interest rate</Text> part payment.
+                </Text>
+                <View>
+                  <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+                    <Text style={{ fontWeight: "800", fontSize: 16 }}>Amount</Text>
+                    <Text style={{ fontWeight: "800", fontSize: 16 }}>₹4000</Text>
+                  </View>
+                  <RangeSlider />
+                  <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+                    <Text style={{ fontWeight: "700", fontSize: 16 }}>Remaining amount</Text>
+                    <Text style={{ fontWeight: "800", fontSize: 16 }}>₹4000</Text>
+                  </View>
+                  <View style={{ height: 307, width: "98%", backgroundColor: "#FFFFFF", borderColor: "#00000020", borderWidth: 1, borderRadius: 5, marginVertical: "5%" }}>
+                  </View>
+                </View>
+              </View>
+            )}
+          </View>
+        </View>
         <View>
-          <View style={{flexDirection:"row", justifyContent:"space-between"}}>
-          <Text style={{fontWeight:"800", fontSize:16}}>Amount</Text>
-          <Text style={{fontWeight:"800", fontSize:16}}>₹4000</Text>
-          </View>
-          <RangeSlider/>
-          <View style={{flexDirection:"row", justifyContent:"space-between"}}>
-          <Text style={{fontWeight:"700", fontSize:16}}>Remaining amount</Text>
-          <Text style={{fontWeight:"800", fontSize:16}}>₹4000</Text>
-          </View>
-          <View style={{height:307, width:"98%", backgroundColor:"#FFFFFF", borderColor:"#00000020", borderWidth:1, borderRadius:5, marginVertical:"5%"}}>
-            </View>
+          <Text style={styles.heading}>Your Saved Cards</Text>
+          <FlatList
+            data={savedCardsData}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => (
+              <View style={styles.card}>
+                <Text style={styles.cardNumber}>{item.cardNumber}</Text>
+                <View style={styles.cardDetails}>
+                  <Text style={styles.detailText}>CVV: {item.cvv}</Text>
+                  <Text style={styles.detailText}>
+                    Expires: {item.expirationDate}
+                  </Text>
+                  <Text style={styles.detailText}>
+                    Cardholder: {item.cardHolder}
+                  </Text>
+                </View>
+              </View>
+            )}
+          />
         </View>
-        </View>
-      )}
+
       </View>
-  </View>
-  <View>
-  <Text style={styles.heading}>Your Saved Cards</Text>
-  <FlatList
-    data={savedCardsData}
-    horizontal
-    showsHorizontalScrollIndicator={false}
-    keyExtractor={(item) => item.id}
-    renderItem={({ item }) => (
-      <View style={styles.card}>
-        <Text style={styles.cardNumber}>{item.cardNumber}</Text>
-        <View style={styles.cardDetails}>
-          <Text style={styles.detailText}>CVV: {item.cvv}</Text>
-          <Text style={styles.detailText}>
-            Expires: {item.expirationDate}
-          </Text>
-          <Text style={styles.detailText}>
-            Cardholder: {item.cardHolder}
-          </Text>
-        </View>
+      <TouchableOpacity style={{ backgroundColor: "#F9FFFC", height: 43, marginVertical: "9%", justifyContent: "center", borderColor: "#00000010", borderWidth: 1 }}>
+        <Text style={{ color: "#333333", fontSize: 10, textAlign: "center", fontWeight: "500" }}>Add New Credit/Debit Card</Text>
+      </TouchableOpacity>
+      <UpiPaymentSection />
+      <Wallets />
+      <View style={styles.section}>
+        <TouchableOpacity style={styles.btns} activeOpacity={0.7}>
+
+          <Text style={{ color: '#FFFFFF', fontSize: 12 }}>Payable Amount</Text>
+          <Text style={styles.btnsText}>₹2640</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.buttonQuickOrder} activeOpacity={0.7}>
+          <Text style={styles.quickBtnText}>Proceed to pay</Text>
+        </TouchableOpacity>
       </View>
-    )}
-  />
-  </View>
-  
-</View>
-<TouchableOpacity style={{backgroundColor:"#F9FFFC", height:43, marginVertical:"9%", justifyContent:"center", borderColor:"#00000010", borderWidth:1}}>
-      <Text style={{color:"#333333", fontSize:10, textAlign:"center", fontWeight:"500" }}>Add New Credit/Debit Card</Text>
-</TouchableOpacity> 
-  <UpiPaymentSection/> 
-  <Wallets/>
-  <View style={styles.section}>
-<TouchableOpacity style={styles.btns} activeOpacity={0.7}>
-  
-<Text style={{color:'#FFFFFF', fontSize:12}}>Payable Amount</Text>
-  <Text style={styles.btnsText}>₹2640</Text>
-</TouchableOpacity>
-<TouchableOpacity style={styles.buttonQuickOrder} activeOpacity={0.7}>
-  <Text style={styles.quickBtnText}>Proceed to pay</Text>
-</TouchableOpacity>
-</View>
-</View>  )
+    </View>)
 }
 
 export default CartPage;
@@ -435,9 +437,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
     marginBottom: 10,
-    marginHorizontal:"5%",
-    color:"#333333",
-    marginTop:"6%"
+    marginHorizontal: "5%",
+    color: "#333333",
+    marginTop: "6%"
   },
   upperHalf: {
     flexDirection: "row",
@@ -544,15 +546,15 @@ const styles = StyleSheet.create({
     fontSize: 11,
   },
   button2: {
-    height: 19, 
-    width:70,
+    height: 19,
+    width: 70,
     borderRadius: 5,
-    borderColor:"#33333310",
-    borderWidth:1, 
-    marginHorizontal:5
+    borderColor: "#33333310",
+    borderWidth: 1,
+    marginHorizontal: 5
   },
   cardContainer2: {
-    marginTop: 5, 
+    marginTop: 5,
   },
   card2: {
     width: 111,
@@ -566,43 +568,43 @@ const styles = StyleSheet.create({
   section: {
     height: 83,
     width: '100%',
-    backgroundColor: '#344435', 
+    backgroundColor: '#344435',
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    paddingHorizontal: 16 , 
+    paddingHorizontal: 16,
   },
   btns: {
     height: 41,
-    width: '45%',   
+    width: '45%',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 5,
   },
-  quickBtnText:{
-    color:"#333333",
+  quickBtnText: {
+    color: "#333333",
     fontSize: 16,
-    fontWeight:'500'
+    fontWeight: '500'
   },
   buttonQuickOrder: {
     height: 41,
-    width: '45%', 
+    width: '45%',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 5,
-    backgroundColor:"#FFFFFF"
+    backgroundColor: "#FFFFFF"
   },
   btnsText: {
     fontSize: 18,
-    color:"#FFFFFF",
-    fontWeight:'bold'
+    color: "#FFFFFF",
+    fontWeight: 'bold'
   },
   card: {
     backgroundColor: "#3A4545",
     padding: 15,
-    borderRadius: 10, 
+    borderRadius: 10,
     width: 250,
-    marginLeft:15,
+    marginLeft: 15,
     elevation: 3, // Add elevation for a card-like shadow (Android)
     shadowColor: "#000", // Add shadow for a card-like shadow (iOS)
     shadowOffset: { width: 0, height: 2 },
