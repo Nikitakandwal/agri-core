@@ -1,5 +1,13 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { View, Text, StatusBar, Image, TouchableOpacity, Animated, StyleSheet } from "react-native";
+import React, { useState, useRef, useEffect } from "react";
+import {
+  View,
+  Text,
+  StatusBar,
+  Image,
+  TouchableOpacity,
+  Animated,
+  StyleSheet,
+} from "react-native";
 import { Icon } from "react-native-elements";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { SvgXml } from "react-native-svg";
@@ -29,13 +37,11 @@ const MySvg = () => {
     </View>
   );
 };
-
 const Header = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const sidebarWidth = 284;
 
-  // Animated value for controlling the left position of the sidebar
   const animatedValue = useRef(new Animated.Value(-sidebarWidth)).current;
 
   const openSidebar = () => {
@@ -43,7 +49,7 @@ const Header = () => {
     Animated.timing(animatedValue, {
       toValue: 0,
       duration: 300,
-      useNativeDriver: false, // Set to true if possible for better performance
+      useNativeDriver: false,
     }).start();
   };
 
@@ -51,19 +57,17 @@ const Header = () => {
     Animated.timing(animatedValue, {
       toValue: -sidebarWidth,
       duration: 300,
-      useNativeDriver: false, // Set to true if possible for better performance
+      useNativeDriver: false,
     }).start(() => {
       setIsSidebarOpen(false);
     });
   };
 
   useEffect(() => {
-    // Reset the animated value when the sidebar state changes to closed
     if (!isSidebarOpen) {
       animatedValue.setValue(-sidebarWidth);
     }
   }, [isSidebarOpen, animatedValue, sidebarWidth]);
-
 
   return (
     <>
@@ -91,18 +95,58 @@ const Header = () => {
 
       {isSidebarOpen && (
         <Animated.View
-          style={[
-            styles.sidebar,
-            { left: animatedValue, width: sidebarWidth },
-          ]}
+          style={[styles.sidebar, { left: animatedValue, width: sidebarWidth }]}
         >
           <TouchableOpacity onPress={closeSidebar}>
             <Image
               source={require("../assets/icons/closeIcon.png")}
               style={styles.closeIcon}
             />
+            <View style={{marginTop:"20%"}}>
+              <TouchableOpacity  style={{flexDirection:"row", marginTop:"6%", marginBottom:"5%", marginLeft:"5%", width:"80%"}}>
+                <Icon name="play-circle" type="font-awesome" color="white" size={27}/>
+                <Text style={styles.opt}>How Agricore app works?</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={{flexDirection:"row", marginTop:"6%", marginBottom:"5%", marginLeft:"5%", width:"80%"}}>
+                <Icon name="phone-in-talk" type="materialIcons" color="white" size={27}/>
+                <Text style={styles.opt}>Book an apointment with expert</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={{flexDirection:"row", marginTop:"6%", marginBottom:"5%", marginLeft:"5%", width:"80%"}}>
+                <Icon name="wechat" type="font-awesome" color="white" size={27}/>
+                <Text style={styles.opt}>Chat to solve problem</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={{flexDirection:"row", marginTop:"6%", marginBottom:"5%", marginLeft:"5%", width:"80%"}}>
+                <Icon name="thumbs-up-down" type="MaterialCommunityIcons" color="white" size={27}/>
+                <Text style={styles.opt}>Rate Agricore app</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={{flexDirection:"row", marginTop:"6%", marginBottom:"5%", marginLeft:"5%", width:"80%"}}>
+                <Icon name="language" type="font-awesome" color="white" size={27}/>
+                <Text style={styles.opt}>Change Language</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={{flexDirection:"row", marginTop:"6%", marginBottom:"5%", marginLeft:"5%", width:"80%"}}>
+                <Icon name="person-add" type="ionicons" color="white" size={27}/>
+                <Text style={styles.opt}>Invite friends</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={{flexDirection:"row", marginTop:"6%", marginBottom:"5%", marginLeft:"5%", width:"80%"}}>
+                <Icon name="share-alt" type="font-awesome" color="white" size={27}/>
+                <Text style={styles.opt}>Share Agricore app</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={{flexDirection:"row", marginTop:"6%", marginBottom:"5%", marginLeft:"5%", width:"80%"}}>
+                <Icon name="lightbulb" type="foundation" color="white" size={27}/>
+                <Text style={styles.opt}>Suggestion</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={{flexDirection:"row", marginTop:"6%", marginBottom:"5%", marginLeft:"5%", width:"80%"}}>
+                <Icon name="logout" type="MaterialCommunityIcons" color="white" size={27}/>
+                <Text style={styles.opt}>Logout</Text>
+              </TouchableOpacity>
+            </View>
           </TouchableOpacity>
-          {/* Add your sidebar content here */}
         </Animated.View>
       )}
     </>
@@ -118,6 +162,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 16,
     paddingTop: Platform.OS === "ios" ? 40 : 16,
+    zIndex: 1,
   },
   sidebarIcon: {
     width: 22.5,
@@ -125,7 +170,7 @@ const styles = StyleSheet.create({
   },
   iconsContainer: {
     flexDirection: "row",
-    marginLeft: "auto", // Push icons to the right
+    marginLeft: "auto",
     marginTop: 16,
     justifyContent: "space-around",
     width: "37%",
@@ -135,15 +180,21 @@ const styles = StyleSheet.create({
     height: 34,
   },
   sidebar: {
-    position: 'absolute',
+    position: "absolute",
     top: 0,
     height: "100%",
-    backgroundColor: '#151716',
-    zIndex: 1,
+    backgroundColor: "#151716",
+    zIndex: 5,
   },
   closeIcon: {
     width: 20,
     height: 20,
+    margin: 10,
+  },
+  opt: {
+    color: "#FFFFFF",
+    fontSize:17,
+    paddingLeft:"7%"
   },
 });
 

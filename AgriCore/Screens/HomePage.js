@@ -27,7 +27,6 @@ export default class HomePage extends Component {
 
     return (
       <ScrollView style={styles.container}>
-        <Header />
         <View style={styles.breadcrumbContainer}>
           <BreadCrumb />
         </View>

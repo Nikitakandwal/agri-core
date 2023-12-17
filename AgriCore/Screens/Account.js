@@ -19,7 +19,6 @@ const windowWidth = Dimensions.get("window").width;
 const Account = () => {
   return (
     <ScrollView>
-      <Header />
       <Name name={"Aditya Singh"} location={"Delhi"} />
       <SearchBar
         placeholder={"Account, settings"}
@@ -176,7 +175,7 @@ const Account = () => {
         <TouchableOpacity
           style={styles.btn}
         >
-          <Text>Layout </Text>
+          <Text>Logout </Text>
           <View style={{ transform: [{ scaleX: -1 }] }}>
             <Ionicons name="exit-outline" size={24} color="black" />
           </View>

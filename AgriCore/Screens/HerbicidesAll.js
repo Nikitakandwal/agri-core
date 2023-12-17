@@ -125,7 +125,6 @@ const HerbicidesAll = () => {
   };
   return (
     <ScrollView>
-    <Header/>
     <BreadCrumb/>
     <SearchBar placeholder={"Pesticides, herbicides"} onSearch={handleSearch} /> 
       <HerbicidesPage filteredCardsData={filteredCardsData} />

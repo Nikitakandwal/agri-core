@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, Image, StyleSheet, Dimensions } from 'react-native';
 
+const windowWidth = Dimensions.get("window").width;
 const NewsAndUpdate = () => {
   return (
     <View style={styles.container}>
@@ -13,22 +14,18 @@ const NewsAndUpdate = () => {
 
       <View style={styles.cardsContainer}>
         <View style={styles.card}>
-          {/* Video Section */}
           <View style={styles.videoSection}>
-            {/* Placeholder for Video (you can replace it with your actual video component) */}
-            <Image
+             <Image
               source={require('../assets/video/thumbnail.png')}
               style={styles.videoPlaceholder}
             />
           </View>
 
-          {/* Text Section */}
           <Text style={styles.cardText}>
             Annadata: How to do Bamboo Farming? - Agri News - Farming News.
           </Text>
         </View>
 
-        {/* Repeat similar structure for the second card */}
         <View style={styles.card}>
           <View style={styles.videoSection}>
             <Image
@@ -70,14 +67,14 @@ const styles = StyleSheet.create({
   },
   card: {
     height: 149,
-    width: 138,
+    width: windowWidth*0.39,
     borderColor: 'rgba(0, 0, 0, 0.2)',
     borderWidth: 1,
     borderRadius:8,
     marginRight:15
   },
   videoSection: {
-    width: 138,
+    width: windowWidth*0.385,
     height: 90,
     overflow: 'hidden',
   },

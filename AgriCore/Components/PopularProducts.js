@@ -1,6 +1,7 @@
 import React, { useState, useRef }  from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, Modal, FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { useNavigation } from '@react-navigation/native';
 
 const WhiteDropdownButton = () => {
   const [selectedValue, setSelectedValue] = useState(null);
@@ -90,16 +91,23 @@ const PopularCards = ({
   card2Text,
   card2TextStyle,
 }) => {
+  const navigation = useNavigation();
+
+  const handleViewAll = () => {
+    // Navigate to the desired screen when "View All" is clicked
+    navigation.navigate('NewArrivals');
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
         <Text style={styles.heading}>{headingText}</Text>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={handleViewAll}>
           <Text style={styles.buttonText}>{buttonText}</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.cardsContainer}>
-        <View style={[styles.card, { width: card1Size.width, height: card1Size.height }]}>
+        <View style={[styles.card, {height: card1Size.height }]}>
           <Image source={card1Image} style={[styles.cardImage, card1ImageStyle]} />
           <Image source={require("../assets/img/Union2.png")}  style={styles.overlayImage}/>
           <Text style={styles.overlayText}>11% off</Text>
@@ -111,7 +119,7 @@ const PopularCards = ({
               <Price originalPrice={939} discountedPrice={630} />
        </View>
         <View style={{ marginHorizontal: 8 }} />
-        <View style={[styles.card, { width: card2Size.width, height: card2Size.height }]}>
+        <View style={[styles.card, {height: card2Size.height }]}>
           <Image source={card2Image} style={[styles.cardImage, card2ImageStyle]} />
           <Image source={require("../assets/img/Union2.png")}  style={styles.overlayImage}/>
           <Text style={styles.overlayText}>34% off</Text>
@@ -163,8 +171,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#f8f8f8',
     borderRadius: 8,
     overflow: 'hidden',
+    width:"48%",
     elevation: 5,
-    // For iOS
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.5,

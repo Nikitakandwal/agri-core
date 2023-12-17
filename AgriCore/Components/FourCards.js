@@ -1,5 +1,7 @@
 import React from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, Image, TouchableOpacity,Dimensions,  StyleSheet } from 'react-native';
+
+const windowWidth = Dimensions.get("window").width;
 
 const Price = ({ originalPrice, discountedPrice }) => {
     return (
@@ -112,10 +114,12 @@ const FourCards = () => {
 const styles = StyleSheet.create({
   container: {
     height: 430,
-    width: 375,
+    width:windowWidth*1,
     backgroundColor: '#E4E4E4',
     borderColor: 'rgba(0, 0, 0, 0.1)',
     borderWidth: 1,
+    justifyContent:"center",
+    alignItems:"center"
   },
   headerText: {
     fontSize: 11,
@@ -135,8 +139,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#FDFDFD',
     borderColor: 'rgba(0, 0, 0, 0.2)',
     borderWidth: 1,
-    borderRadius:10,
-    marginLeft:15,
+    borderRadius:10, 
+    marginHorizontal:8,
     marginTop:15,
     ...Platform.select({
       android: {
